@@ -1,8 +1,6 @@
-# 📡 Churn Intelligence Dashboard
+# Churn Intelligence Dashboard
 
-> **A machine learning-powered telecom customer churn prediction dashboard built with Streamlit, Random Forest, and Plotly — featuring SHAP explainability, batch scoring, retention ROI estimation, prediction history logging, and a fully responsive dark/light UI.**
-
-<br>
+A machine learning-powered telecom customer churn prediction dashboard built with Streamlit, Random Forest, and Plotly. The dashboard provides SHAP-based explainability, batch scoring, retention ROI estimation, prediction history logging, and a fully responsive interface with dark and light themes.
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
@@ -11,66 +9,69 @@
 ![License](https://img.shields.io/badge/License-MIT-0F828C?style=for-the-badge)
 
 ---
-## Live Demo 
 
-website link : (https://churnguard-customer1721.streamlit.app/)
+## Live Demo
 
-## ✨ Features
+[churnguard-customer1721.streamlit.app](https://churnguard-customer1721.streamlit.app/)
+
+---
+
+## Landing Page
+
+![Churn Intelligence Dashboard](./dashboard-preview.png)
+
+The landing view surfaces the model's top five predictive features for quick input, alongside live KPIs — total predictions, average churn risk, and high/low risk customer counts — and a summary of how the dashboard works.
+
+---
+
+## Features
 
 | Feature | Description |
 |---|---|
-| 🔍 **Churn Prediction** | Predict individual customer churn risk with a 3-tier scoring system (Low / Medium / High) |
-| 🧠 **SHAP Explainability** | Visualize exactly which features drive each prediction up or down |
-| 💰 **Cost Estimator** | Calculate revenue at risk, campaign ROI, and break-even probability |
-| 📂 **Batch Analysis** | Upload a CSV to score thousands of customers at once and download results |
-| 📋 **Prediction History** | Every prediction is auto-saved to SQLite with trend charts and export |
-| 📊 **KPI Banner** | Live dashboard metrics — total predictions, avg risk, high/low risk counts |
-| 📄 **PDF Export** | One-click downloadable prediction report per customer |
-| 🌙 **Dark / Light Theme** | Toggle between themes with a single button click |
-| 📱 **Fully Responsive** | Optimized for desktop, tablet, and mobile screens |
+| **Churn Prediction** | Predicts individual customer churn risk using a three-tier scoring system (Low, Medium, High) |
+| **SHAP Explainability** | Visualizes which features drive each prediction up or down |
+| **Cost Estimator** | Calculates revenue at risk, campaign ROI, and break-even probability |
+| **Batch Analysis** | Scores thousands of customers at once from an uploaded CSV, with downloadable results |
+| **Prediction History** | Logs every prediction to SQLite, with trend charts and export |
+| **KPI Banner** | Displays live dashboard metrics — total predictions, average risk, and high/low risk counts |
+| **PDF Export** | Generates a downloadable prediction report per customer |
+| **Dark / Light Theme** | Toggles between themes with a single click |
+| **Responsive Layout** | Optimized for desktop, tablet, and mobile screens |
 
 ---
 
-## 🖥️ Dashboard Preview
-
-```
-📡 Churn Intelligence
-─────────────────────────────────────────────────────
-  Total Predictions  |  Avg Risk  |  High Risk  |  Low Risk
-─────────────────────────────────────────────────────
-  🔍 Predict  |  🧠 SHAP  |  💰 Cost  |  📂 Batch  |  📋 History
-```
-
----
-
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/churn-intelligence.git
 cd churn-intelligence
 ```
 
 ### 2. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 3. Train the model
+
 ```bash
 python train_model.py
 ```
 
 ### 4. Run the dashboard
+
 ```bash
 streamlit run app.py
 ```
 
-The app will open at **`http://localhost:8501`**
+The app opens at `http://localhost:8501`.
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 ```txt
 streamlit
@@ -83,36 +84,36 @@ shap
 fpdf2
 ```
 
-> Install all at once: `pip install -r requirements.txt`
+Install all dependencies at once with `pip install -r requirements.txt`.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 churn-intelligence/
 │
-├── app.py                          # Main Streamlit dashboard
-├── train_model.py                  # Model training script
-├── requirements.txt                # Python dependencies
+├── app.py                                   # Main Streamlit dashboard
+├── train_model.py                           # Model training script
+├── requirements.txt                         # Python dependencies
 │
-├── churn_model.pkl                 # Trained Random Forest model (auto-generated)
-├── scaler.pkl                      # Feature scaler (auto-generated)
-├── columns.pkl                     # Feature column names (auto-generated)
-├── churn_history.db                # SQLite prediction log (auto-generated)
+├── churn_model.pkl                          # Trained Random Forest model (auto-generated)
+├── scaler.pkl                               # Feature scaler (auto-generated)
+├── columns.pkl                               # Feature column names (auto-generated)
+├── churn_history.db                          # SQLite prediction log (auto-generated)
 │
-└── WA_Fn-UseC_-Telco-Customer-Churn.csv   # Dataset (required for training)
+└── WA_Fn-UseC_-Telco-Customer-Churn.csv      # Dataset (required for training)
 ```
 
 ---
 
-## 🧠 Model Details
+## Model Details
 
 | Property | Value |
 |---|---|
 | **Algorithm** | Random Forest Classifier |
 | **Dataset** | IBM Telco Customer Churn |
-| **Features** | 24 behavioral & contractual features |
+| **Features** | 24 behavioral and contractual features |
 | **Class Balancing** | `class_weight="balanced"` |
 | **Explainability** | SHAP TreeExplainer |
 
@@ -120,52 +121,57 @@ churn-intelligence/
 
 | Feature | Churn Signal | Why It Matters |
 |---|---|---|
-| Contract Type | 🔴 Very High | Month-to-month customers churn at ~42% vs ~3% for 2-year |
-| Tenure | 🔴 High | Customers < 12 months are 3–5× more likely to churn |
-| Monthly Charges | 🟡 Medium | High bills drive price sensitivity, especially on Fiber |
-| Tech Support | 🟡 Medium | No support = customers feel abandoned |
-| Payment Method | 🟡 Medium | Electronic check users have ~45% higher churn rate |
-| Add-on Services | 🔵 Inverse | More add-ons = higher switching costs = lower churn |
+| Contract Type | Very High | Month-to-month customers churn at approximately 42%, compared to approximately 3% for two-year contracts |
+| Tenure | High | Customers with less than 12 months of tenure are 3–5 times more likely to churn |
+| Monthly Charges | Medium | Higher bills increase price sensitivity, particularly for fiber customers |
+| Tech Support | Medium | Lack of support correlates with a greater sense of customer abandonment |
+| Payment Method | Medium | Customers paying by electronic check show an approximately 45% higher churn rate |
+| Add-on Services | Inverse | Additional services raise switching costs, which lowers churn |
 
 ---
 
-## 📊 Dashboard Tabs
+## Dashboard Tabs
 
-### 🔍 Predict
-Run a prediction for a single customer using sidebar inputs. Displays a risk badge, churn probability gauge, retention recommendations, feature importance chart, and correlation heatmap. Includes one-click PDF export.
+### Predict
 
-### 🧠 SHAP Explainer
-Click **Explain This Prediction** to generate a SHAP waterfall chart showing which features increased or decreased churn risk for the current customer profile. Highlights top 3 churn drivers and top 3 retention signals.
+Runs a prediction for a single customer based on sidebar inputs. Displays a risk badge, churn probability gauge, retention recommendations, a feature importance chart, and a correlation heatmap. Includes one-click PDF export.
 
-### 💰 Cost Estimator
-Enter Customer LTV, campaign cost, expected churn reduction %, and discount rate. Outputs revenue at risk, revenue saved, net ROI, and a waterfall chart. Auto-recommends whether the campaign is financially justified.
+### SHAP Explainer
 
-### 📂 Batch Analysis
-Upload a customer CSV. The model scores every row, assigns risk tiers, and displays a risk distribution pie chart and probability histogram. Download the scored file with one click.
+Generates a SHAP waterfall chart on demand, showing which features increased or decreased churn risk for the current customer profile. Highlights the top three churn drivers and the top three retention signals.
 
-### 📋 History
-All predictions are auto-logged to a local SQLite database. View a risk trend line over time, risk tier distribution bar chart, full prediction table, and clear/download history.
+### Cost Estimator
+
+Accepts customer lifetime value, campaign cost, expected churn reduction percentage, and discount rate as inputs. Outputs revenue at risk, revenue saved, net ROI, and a waterfall chart, and indicates whether the campaign is financially justified.
+
+### Batch Analysis
+
+Scores an uploaded customer CSV row by row, assigns risk tiers, and displays a risk distribution pie chart and probability histogram. The scored file can be downloaded directly from the dashboard.
+
+### History
+
+Logs all predictions to a local SQLite database automatically. Provides a risk trend line over time, a risk tier distribution chart, a full prediction table, and options to clear or export history.
 
 ---
 
-## 🎨 Tech Stack
+## Tech Stack
 
-- **Frontend** — Streamlit + custom CSS (DM Sans font, glassmorphism cards, gradient sidebar)
-- **ML Model** — Scikit-Learn Random Forest with balanced class weights
+- **Frontend** — Streamlit with custom CSS (DM Sans font, glassmorphism cards, gradient sidebar)
+- **Machine Learning** — Scikit-learn Random Forest with balanced class weights
 - **Explainability** — SHAP TreeExplainer
-- **Charts** — Plotly Express & Graph Objects
-- **Storage** — SQLite (prediction history), Pickle (model artifacts)
+- **Charts** — Plotly Express and Graph Objects
+- **Storage** — SQLite for prediction history, Pickle for model artifacts
 - **PDF Export** — fpdf2
-- **Responsive** — CSS media queries for desktop / tablet / mobile / small phone
+- **Responsive Design** — CSS media queries for desktop, tablet, mobile, and small-phone breakpoints
 
 ---
 
-## 👩‍💻 Author
+## Author
 
 **Mahreen Begum**
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
